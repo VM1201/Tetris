@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b16" />
+  <meta name="description" content="A fast, modern browser Tetris game." />
+  <title>Neon Tetris — Free Online Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <h1>NEON TETRIS</h1>
+          <p>Classic blocks. Modern glow.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="soundBtn" class="icon-btn" type="button" aria-label="Toggle sound">🔊</button>
+        <button id="themeBtn" class="icon-btn" type="button" aria-label="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <aside class="sidebar left-panel glass-card">
+        <section class="stat-block">
+          <span class="stat-label">SCORE</span>
+          <strong id="score">0</strong>
+        </section>
+        <section class="stat-block">
+          <span class="stat-label">HIGH SCORE</span>
+          <strong id="highScore">0</strong>
+        </section>
+        <section class="stat-block small-stat-row">
+          <div><span class="stat-label">LINES</span><strong id="lines">0</strong></div>
+          <div><span class="stat-label">LEVEL</span><strong id="level">1</strong></div>
+        </section>
+
+        <div class="divider"></div>
+        <section class="preview-section">
+          <div class="section-title">NEXT</div>
+          <div class="next-box" id="nextBox" aria-label="Next piece"></div>
+        </section>
+
+        <div class="divider"></div>
+        <section class="how-to">
+          <div class="section-title">CONTROLS</div>
+          <div class="control-row"><kbd>←</kbd><kbd>→</kbd><span>Move</span></div>
+          <div class="control-row"><kbd>↓</kbd><span>Soft drop</span></div>
+          <div class="control-row"><kbd>↑</kbd><span>Rotate</span></div>
+          <div class="control-row"><kbd>SPACE</kbd><span>Hard drop</span></div>
+          <div class="control-row"><kbd>P</kbd><span>Pause</span></div>
+        </section>
+      </aside>
+
+      <section class="board-wrap">
+        <div class="board-frame">
+          <canvas id="gameCanvas" width="300" height="600" aria-label="Tetris game board" role="img"></canvas>
+          <div class="scanlines"></div>
+          <div id="overlay" class="overlay hidden">
+            <div class="overlay-card glass-card">
+              <div id="overlayIcon" class="overlay-icon">⏸</div>
+              <h2 id="overlayTitle">PAUSED</h2>
+              <p id="overlayText">Press P or tap Resume to continue.</p>
+              <button id="overlayBtn" class="primary-btn" type="button">RESUME</button>
+            </div>
+          </div>
+        </div>
+        <div class="board-caption">
+          <span>10 × 20 GRID</span>
+          <span class="live-dot"><i></i> LIVE</span>
+        </div>
+      </section>
+
+      <aside class="sidebar right-panel glass-card">
+        <section>
+          <div class="section-title">GAME</div>
+          <button id="newGameBtn" class="primary-btn full" type="button">NEW GAME</button>
+          <button id="pauseBtn" class="secondary-btn full" type="button">PAUSE</button>
+        </section>
+
+        <div class="divider"></div>
+        <section class="tips">
+          <div class="section-title">SCORING</div>
+          <p><strong>1 line</strong><span>100 × level</span></p>
+          <p><strong>2 lines</strong><span>300 × level</span></p>
+          <p><strong>3 lines</strong><span>500 × level</span></p>
+          <p><strong>4 lines</strong><span>800 × level</span></p>
+        </section>
+
+        <div class="divider"></div>
+        <section class="mobile-controls" aria-label="Touch controls">
+          <div class="section-title">TOUCH CONTROLS</div>
+          <div class="touch-grid">
+            <button class="touch-btn rotate" data-action="rotate" aria-label="Rotate">↻</button>
+            <button class="touch-btn hold" data-action="hold" aria-label="Hold piece">HOLD</button>
+            <button class="touch-btn" data-action="left" aria-label="Move left">←</button>
+            <button class="touch-btn drop" data-action="drop" aria-label="Hard drop">⇣</button>
+            <button class="touch-btn" data-action="right" aria-label="Move right">→</button>
+            <button class="touch-btn" data-action="down" aria-label="Soft drop">↓</button>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer">Built for the browser • No account required • Your high score stays on this device</footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
